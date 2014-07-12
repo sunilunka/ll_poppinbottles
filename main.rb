@@ -2,16 +2,20 @@
    'bought' => 0,
    'from_bottles' => 0,
    'from_caps' => 0,
-   'total_free' => 0   
+   'total_free' => 0, 
+   'caps_left' => 0,
+   'bottles_left' => 0  
 }
 
 @keep_running = true
 
 def get_bottles(money)
   @bottles['bought'] = money/2
-  @bottles['from_bottles'] = @bottles['bought']/2 
+  @bottles['from_bottles'] = @bottles['bought']/2
   @bottles['from_caps'] = @bottles['bought']/4
   @bottles['total_free'] = @bottles['from_bottles'] + @bottles['from_caps']
+  @bottles['caps_left'] = @bottles['bought']%4
+  @bottles['bottles_left'] = @bottles['bought']%2
   display_bottles
   
 end
@@ -59,14 +63,14 @@ def display_bottles
   puts "Bottles Purchased: #{@bottles['bought']} "
   puts "Pop from bottles recycled: #{@bottles['from_bottles']}"
   puts "Pop from bottle caps recycled: #{@bottles['from_caps']}"
+  puts "Pop bottles left over: #{@bottles['bottles_left']}"
+  puts "Pop bottle caps left over: #{@bottles['caps_left']}"
   puts
 end
 
 def run_program
-  while @keep_running
     bottles_bought
     display_bottles
-  end
 end
 
 user_option
