@@ -7,8 +7,6 @@
    'bottles_left' => 0  
 }
 
-@keep_running = true
-
 def get_bottles(money)
   @bottles['bought'] = money/2
   @bottles['from_bottles'] = @bottles['bought']/2
